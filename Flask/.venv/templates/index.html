@@ -10,6 +10,9 @@
             padding: 20px;
             margin-bottom: 10px;
         }
+        textarea {
+            resize: none;
+        }
         .temperature, .humidity {
             padding: 0;
         }
@@ -25,6 +28,7 @@
     </style>
 </head>
 <body>
+    {% for item in data %}
     <div class="container mt-3">
         <form method="post">
             <div class="form-row">
@@ -74,8 +78,8 @@
                 <div class="form-group col-md-2 bordered">
                         <label class="font-weight-bold" for="datetime">Température</label>
                 </div>
-                <div class="form-group col-md-10 bordered">
-                    <!-- Température -->
+                <div class="form-group col-md-10 bordered text-center">
+                    {{ item.Temperature }} °C
                 </div>
             </div>
 
@@ -83,8 +87,8 @@
                 <div class="form-group col-md-2 bordered">
                         <label class="font-weight-bold" for="datetime">Humidité</label>
                 </div>
-                <div class="form-group col-md-10 bordered">
-                    <!-- Humidité -->
+                <div class="form-group col-md-10 bordered text-center">
+                    {{ item.Humidity }}%
                 </div>
             </div>
 
@@ -101,7 +105,7 @@
             </div>
         </form>
     </div>
-
+    {% endfor %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
